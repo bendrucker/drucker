@@ -1,0 +1,38 @@
+{
+  "name": "drucker",
+  "main": "index.js",
+  "version": "0.0.0",
+  "description": "Initialize a new JavaScript module",
+  "license": "MIT",
+  "repository": "bendrucker/drucker",
+  "author": {
+    "name": "Ben Drucker",
+    "email": "bvdrucker@gmail.com",
+    "url": "bendrucker.me"
+  },
+  "scripts": {
+    "test": "standard && tape test.js"
+  },
+  "keywords": [
+    "drucker",
+    "module",
+    "boilerplate",
+    "initialize"
+  ],
+  "devDependencies": {
+    "tape": "^4.0.0",
+    "standard": "^7.0.0"
+  },
+  "files": [
+    "index.js",
+    "test.js"
+  ],
+  "dependencies": {
+    "github": "~1.4.0",
+    "npm-name": "~3.0.0",
+    "pole": "~1.2.0",
+    "pole-wait": "~1.0.0",
+    "run-series": "~1.1.4",
+    "travis-ci": "~2.1.0"
+  }
+}
