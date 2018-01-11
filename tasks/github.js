@@ -1,5 +1,8 @@
 'use strict'
 
+const execa = require('execa')
+const sshUrl = require('github-ssh-url')
+
 module.exports = createRepo
 
 async function createRepo ({name, description, keywords}) {
@@ -10,6 +13,13 @@ async function createRepo ({name, description, keywords}) {
     has_projects: false,
     has_wiki: false
   })
+
+  await execa('git', [
+    'remote',
+    'add',
+    'origin',
+    sshUrl(repo.owner.login, repo.name)
+  ])
 
   await github.repos.replaceTopics({
     owner: repo.owner.login,
