@@ -20,8 +20,10 @@
     "initialize"
   ],
   "devDependencies": {
+    "blue-tape": "~1.0.0",
+    "standard": "^7.0.0",
     "tape": "^4.0.0",
-    "standard": "^7.0.0"
+    "tempy": "~0.2.1"
   },
   "files": [
     "index.js",

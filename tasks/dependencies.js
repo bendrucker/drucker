@@ -4,10 +4,10 @@ const execa = require('execa')
 
 module.exports = installDependencies
 
-async function installDependencies ({cli}) {
+async function installDependencies ({cli}, options) {
   const dependencies = [
-    'tape',
     'standard',
+    'tape',
     cli && 'meow'
   ]
   .filter(Boolean)
@@ -17,5 +17,5 @@ async function installDependencies ({cli}) {
     '--save-dev',
     '--save-prefix=^',
     ...dependencies
-  ])
+  ], options)
 }
