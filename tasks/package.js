@@ -32,5 +32,5 @@ async function writePackage ({author, cli, ...data}, options) {
     }
   })
 
-  await writeFile(JSON.stringify(pkg, null, 2))
+  await writeFile('./package.json', JSON.stringify(pkg, null, 2))
 }
