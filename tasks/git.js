@@ -4,6 +4,6 @@ const execa = require('execa')
 
 module.exports = gitInit
 
-async function gitInit () {
-  await execa('git', ['init'])
+async function gitInit (pkg, options) {
+  await execa('git', ['init'], options)
 }
