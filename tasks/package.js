@@ -1,5 +1,6 @@
 'use strict'
 
+const path = require('path')
 const pick = require('lodash.pick')
 const promisify = require('pify')
 const writeFile = promisify(require('fs').writeFile)
@@ -32,5 +33,8 @@ async function writePackage ({author, cli, ...data}, options) {
     }
   })
 
-  await writeFile('./package.json', JSON.stringify(pkg, null, 2))
+  await writeFile(
+    path.resolve(options.cwd, 'package.json'),
+    JSON.stringify(pkg, null, 2)
+  )
 }
