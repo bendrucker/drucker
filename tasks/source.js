@@ -3,14 +3,17 @@
 const filter = require('boolean-filter-obj')
 const camel = require('camel-case')
 const promisify = require('pify')
+const path = require('path')
 const writeFile = promisify(require('fs').writeFile)
 const dedent = require('dedent')
 
 module.exports = createSource
 
-async function createSource ({name, main, cli}) {
+async function createSource ({main, cli}, options) {
   const files = filter({
     index: `
+      'use strict'
+
       module.exports = ${main}
 
       function ${main} () {
@@ -18,12 +21,18 @@ async function createSource ({name, main, cli}) {
       }
     `,
     cli: cli && `
+      #!/usr/bin/env node
+
+      'use strict'
+
       const meow = require('meow')
       const ${main} = require('./')
 
       const cli = meow(\`\`)
     `,
     test: `
+      'use strict'
+
       const test = require('tape')
       const ${main} = require('./')
 
@@ -34,12 +43,11 @@ async function createSource ({name, main, cli}) {
   })
 
   await Promise.all(Object.keys(files).map(function (basename) {
-    const content = [
-      `'use strict'`,
-      files[basename],
-    ]
-    .join('\n')
+    const content = files[basename]
 
-    return writeFile(basename + '.js', dedent(content) + '\n')
+    return writeFile(
+      path.resolve(options.cwd, basename + '.js'),
+      dedent(content) + '\n'
+    )
   }))
 }
