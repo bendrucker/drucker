@@ -1,4 +1,4 @@
-# drucker [![Build Status](https://travis-ci.org/bendrucker/drucker.svg?branch=master)](https://travis-ci.org/bendrucker/drucker)
+# drucker [![Build Status](https://travis-ci.org/bendrucker/drucker.svg?branch=master)](https://travis-ci.org/bendrucker/drucker) [![Greenkeeper badge](https://badges.greenkeeper.io/bendrucker/drucker.svg)](https://greenkeeper.io/)
 
 > Initialize a new JavaScript module
 
